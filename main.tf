@@ -8,5 +8,14 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-2" #select region
+  region = var.region
+}
+
+resource "aws_instance" "test" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "EC2Instance"
+  }
 }
